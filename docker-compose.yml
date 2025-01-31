@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  itmo-agent:
+    build: .
+    ports:
+      - "80:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    restart: unless-stopped
+    networks:
+      - itmo-network
+
+networks:
+  itmo-network:
+    driver: bridge
